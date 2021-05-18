@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const conn = new Sequelize('postgres://localhost:5432/bookmarks')
+const conn = new Sequelize('postgres://localhost:5432/bookmarks');
 
 const Bookmark = conn.define('bookmark', {
     name: {
@@ -60,4 +60,6 @@ const syncAndSeed = async() => {
     data.map (async(bm) => {await Bookmark.create(bm)})
 }
 
-syncAndSeed()
+syncAndSeed();
+
+module.exports = [syncAndSeed, Bookmark];
